@@ -74,18 +74,18 @@ make deploy
 ## 環境について
 
 ### 土台となるもの
-- Node.js
-- Babel
-- Vue.js
-- TypeScript
+- Node.js (全てを動かす土台)
+- Babel (JavaScriptとTypeScriptをトランスパイル)
+- Vue.js (Viewerを綺麗に作成できるライブラリ)
+- TypeScript (JavaScriptに型を付けてくれるもの)
 
 ### Vue.jsのライブラリ
-- Vuex
-- Vue Router
+- Vuex (Vue.jsのstateを管理)
+- Vue Router (Vue.jsのurlを管理)
 
 ### スタイル
-- Sass
+- Sass (CSSを拡張)
 
 ### 開発をしやすくする コードを綺麗に
-- Eslint
-- Prettier
+- Eslint (コードの書き方を指摘)
+- Prettier (コードを綺麗にする)
