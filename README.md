@@ -2,20 +2,24 @@
 
 ## 環境構築
 
-### ローカルを利用する方
+### ローカルをご利用の方
 
-node.js を 公式サイトからinstallしてきてください。
+node.js を 公式サイトからinstallしてきてください。  
+[https://nodejs.org/ja/](https://nodejs.org/ja/)
 
 ```sh
 # 環境構築 (一回すればok)
 npm i
 
-# ブラウザで閲覧
+# ブラウザで閲覧 (コンパイルもしてます)
 npm run serve
 ```
 
 
 ### dockerをご利用の方
+
+docker を 公式サイトからinstallしてきてください。  
+[https://www.docker.com/](https://www.docker.com/)
 
 ```sh
 # コンテナの起動 (時間がとてもかかります)
@@ -27,33 +31,41 @@ make bash # または docker-compose exec bus_collection sh
 # 環境構築 (一回すればok)
 npm i
 
-# ブラウザで閲覧
+# ブラウザで閲覧 (コンパイルもしてます)
 npm run serve
 
 # 終了
 make down # または docker-compose down
 ```
 
+## ビルド
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
+```sh
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
+## デプロイ
+デプロイ先はGAE
+
+```sh
+make deploy
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 環境について
+
+### 土台となるもの
+- Node.js
+- Babel
+- Vue.js
+- TypeScript
+
+### Vue.jsのライブラリ
+- Vuex
+- Vue Router
+
+### スタイル
+- Sass
+
+### 開発をしやすくする コードを綺麗に
+- Eslint
+- Prettier
