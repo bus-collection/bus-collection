@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="toMap">mapへ</button>
+    <button @click="toTop">topへ</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
-  name: "home",
-  components: {
-    HelloWorld
+  name: "Home",
+  methods: {
+    toMap() {
+      this.$router.push("/map");
+    },
+    toTop() {
+      this.$router.push("/top");
+    }
   }
 };
 </script>
+
+<style scoped>
+button {
+    padding: 2rem;
+    font-size: 2rem;
+    border: 1px solid;
+}
+</style>
