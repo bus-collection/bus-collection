@@ -1,20 +1,19 @@
 <template>
   <div class="home">
     <button @click="toMap">mapへ</button>
-    <!-- <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <button @click="toTop">topへ</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
-  name: "home",
+  name: "Home",
   methods: {
     toMap() {
       this.$router.push("/map");
+    },
+    toTop() {
+      this.$router.push("/top");
     }
   }
 };
@@ -22,7 +21,8 @@ export default {
 
 <style scoped>
 button {
-  padding: 10rem;
-  font-size: 10rem;
+    padding: 2rem;
+    font-size: 2rem;
+    border: 1px solid;
 }
 </style>
