@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  bus_collection:
+    build: .
+    container_name: bus-collection
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    tty: true
+    ports:
+      - "8080:8080"
