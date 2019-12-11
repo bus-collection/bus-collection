@@ -16,7 +16,8 @@ export default {
 </script>
 
 <style scoped>
-h1, .top {
+h1,
+.top {
   margin: 0;
   padding: 0;
 }

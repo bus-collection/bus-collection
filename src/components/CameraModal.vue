@@ -9,7 +9,17 @@
           </div>
 
           <div class="modal-body">
-            <slot name="body"> </slot>
+            <slot name="body">
+              <template v-if="!showImage">
+                <div @click.prevent="toggleImage">
+                  <p><v-icon name="camera" scale="5" /></p>
+                  <p>撮影</p>
+                </div>
+              </template>
+              <template v-else>
+                <img src="../assets/busstop.jpg" @click="$emit('shooted')" />
+              </template>
+            </slot>
           </div>
 
           <div class="modal-footer">
@@ -22,10 +32,24 @@
 </template>
 
 <script>
+import "vue-awesome/icons";
+import Icon from "vue-awesome/components/Icon";
+
 export default {
-  name: "modal",
+  name: "CameraModal",
+  components: {
+    "v-icon": Icon
+  },
+  data() {
+    return {
+      showImage: false
+    };
+  },
   methods: {
-    prevent(e) {}
+    prevent(e) {},
+    toggleImage() {
+      this.showImage = !this.showImage;
+    }
   }
 };
 </script>
@@ -37,9 +61,11 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  display: table;
   transition: opacity 0.3s ease;
 }
 
@@ -49,8 +75,9 @@ export default {
 }
 
 .modal-container {
-  height: 90%;
-  width: 90%;
+  height: 60vh;
+  width: 60vw;
+  overflow: hidden;
   margin: 0 auto;
   display: flex;
   flex-flow: column;
@@ -70,10 +97,12 @@ export default {
   color: #42b983;
 }
 
-.modal-body {
-  margin: 20px 0;
-  overflow: scroll;
-  max-height: 20rem;
+.modal-body p:first-child {
+  margin-top: 12rem;
+}
+
+.modal-body p:last-child {
+  font-size: 3rem;
 }
 
 .modal-default-button {
@@ -100,5 +129,10 @@ export default {
   right: 5px;
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
 </style>

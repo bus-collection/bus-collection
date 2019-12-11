@@ -1,12 +1,12 @@
 <template>
   <div class="map-container">
     <div id="map" style="height: 100%; width: 100%;"></div>
-    <button class="fetch-bus-stops" @click="fetchBusStops">更新</button>
+    <!-- <button class="fetch-bus-stops" @click="fetchBusStops">更新</button> -->
 
     <template v-if="showModal">
       <modal @close="showModal = false">
         <div slot="header">
-          <h3>停留所から出発する路線の検索</h3>
+          <h3>{{ selectedStop.name }}</h3>
         </div>
         <div slot="body">
           <div v-if="progressSircle">
@@ -17,9 +17,15 @@
           </p>
         </div>
         <div slot="footer">
-          <p>目的のバス停まであと200m</p>
+          <p v-if="enableShootingModal">目的のバス停まであと200m</p>
+          <button v-else class="shoot" @click="shoot">撮影する</button>
         </div>
       </modal>
+    </template>
+
+    <template v-if="showShootingModal">
+      <camera-modal @close="showShootingModal = false" @shooted="shooted">
+      </camera-modal>
     </template>
   </div>
 </template>
@@ -28,6 +34,7 @@
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Modal from "../components/Modal.vue";
+import CameraModal from "../components/CameraModal.vue";
 
 const apiKey = "";
 const config = {
@@ -43,10 +50,18 @@ const icon = L.icon({
   popupAnchor: [0, -32]
 });
 
+const collectedIcon = L.icon({
+  iconUrl: require("../assets/buscoll_red.png"),
+  iconSize: [24, 36],
+  iconAnchor: [18, 36],
+  popupAnchor: [0, -32]
+});
+
 export default {
   name: "BusMap",
   components: {
-    Modal
+    Modal,
+    CameraModal
   },
   data() {
     return {
@@ -56,7 +71,11 @@ export default {
       map: undefined,
       showModal: false,
       progressSircle: false,
-      routes: []
+      routes: [],
+      enableShootingModal: false,
+      showShootingModal: false,
+      selectedStop: { name: 111, stopId: 111 },
+      markers: []
     };
   },
   mounted() {
@@ -66,6 +85,8 @@ export default {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
+
+    this.fetchBusStops();
   },
   methods: {
     async fetchBusStops() {
@@ -74,6 +95,7 @@ export default {
         .then(async response => {
           if (response.ok) {
             const json = await response.json();
+            console.log(json.map(e => e.name).join("\n"));
             console.log(json);
             return json;
           }
@@ -85,19 +107,24 @@ export default {
     },
     plotStops(stops) {
       if (!this.map) return;
-      const markers = [];
+      this.markers = [];
       for (let i = 0; i < stops.length; i++) {
-        markers[i] = L.marker([stops[i].lat, stops[i].lng], { icon })
+        this.markers[i] = L.marker([stops[i].lat, stops[i].lng], { icon })
           .addTo(this.map)
           .on("click", e => {
-            this.fetchBusRoute(e.target.id);
+            this.fetchBusRoute(e.target.id, e.target.name);
           });
         const message = stops[i].name;
-        markers[i].id = stops[i].id;
-        markers[i].bindPopup(message, { autoClose: false }).openPopup();
+        this.markers[i].id = stops[i].id;
+        this.markers[i].name = stops[i].name;
+        this.markers[i].bindPopup(message, { autoClose: false }).openPopup();
       }
     },
-    async fetchBusRoute(stopId) {
+    async fetchBusRoute(stopId, name) {
+      this.selectedStop = {
+        name: `${name}`,
+        stopId: `${stopId}`
+      };
       this.showModal = true;
       this.progressSircle = true;
       const uri = `https://api.ottop.org/transit/stops/${stopId}/routes`;
@@ -115,6 +142,32 @@ export default {
       console.log(route);
       this.routes = route;
       this.progressSircle = false;
+      this.enableShootingModal = !this.enableShootingModal;
+    },
+    shoot() {
+      this.showModal = false;
+      this.progressSircle = false;
+      this.showShootingModal = true;
+    },
+    shooted() {
+      this.showShootingModal = false;
+      for (let i = 0; i < this.markers.length; i++) {
+        if (this.markers[i].id === this.selectedStop.stopId) {
+          const latlng = this.markers[i]._latlng;
+          const marke = L.marker([latlng.lat, latlng.lng], {
+            icon: collectedIcon
+          })
+            .addTo(this.map)
+            .on("click", e => {
+              this.fetchBusRoute(e.target.id, e.target.name);
+            });
+          const message = this.markers[i].name;
+          marke.id = this.markers[i].id;
+          marke.name = this.markers[i].name;
+          marke.bindPopup(message, { autoClose: false }).openPopup();
+          this.$set(this.markers, i, marke);
+        }
+      }
     }
   }
 };
@@ -122,7 +175,7 @@ export default {
 
 <style scoped>
 .map-container {
-  height: 100vh;
+  height: calc(100vh - 60px);
   width: 100vw;
 }
 
@@ -153,5 +206,9 @@ export default {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.shoot {
+  border: 1px solid #ccc;
 }
 </style>

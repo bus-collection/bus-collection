@@ -1,16 +1,34 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <button @click="toMap">mapへ</button>
-      <button @click="toTop">topへ</button>
-    </div> -->
     <router-view />
+    <template v-if="!isTop">
+      <menu-footer></menu-footer>
+    </template>
   </div>
 </template>
 
 <script>
+import MenuFooter from "./components/MenuFooter.vue";
+
 export default {
   name: "App",
+  components: {
+    MenuFooter
+  },
+  data() {
+    return {
+      isTop: false
+    };
+  },
+  watch: {
+    $route(to, from) {
+      if (to.name === "top") {
+        this.isTop = true;
+      } else {
+        this.isTop = false;
+      }
+    }
+  }
 };
 </script>
 
