@@ -2,6 +2,26 @@
 
 ## 環境構築
 
+### ソースコードの取得
+
+#### git をご利用の方
+
+```sh
+# ソースコードを持ってくる
+git clone https://github.com/bus-collection/bus-collection.git
+# プロジェクトフォルダに移動
+cd bus-collection
+```
+
+#### git をご利用でないの方
+
+```sh
+# ソースコードを持ってくる
+https://github.com/bus-collection/bus-collection から zipフォルダでダウンロードする
+zipフォルダを解凍
+解凍したフォルダに移動
+```
+
 ### ローカルをご利用の方
 
 node.js を 公式サイトからinstallしてきてください。  
