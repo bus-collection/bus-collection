@@ -4,6 +4,9 @@
       <li v-for="(quest, index) in quests" :key="index" @click="toMap">
         <p>Q{{ index + 1 }}</p>
         <p>{{ quest.name }}</p>
+        <div class="point">
+          {{ quest.point }} point
+        </div>
       </li>
     </ul>
     <div class="footer">
@@ -26,11 +29,12 @@ export default {
         //   point: 10
         // },
         { type: "map", name: "近くのバス停を1つコレクトしよう！", point: 10 },
-        { type: "map", name: "近くのバス停を3つコレクトしよう！", point: 10 },
-        { type: "map", name: "バス停を5つコレクトしよう！", point: 10 },
-        { type: "map", name: "バス停を10つコレクトしよう！", point: 10 },
-        { type: "map", name: "1路線をコレクトしよう！", point: 10 },
-        { type: "map", name: "2路線をコレクトしよう！", point: 10 },
+        { type: "map", name: "近くのバス停を3つコレクトしよう！", point: 45 },
+        { type: "map", name: "近くのバス停の行先表示/時刻表をコレクトしよう！", point: 10 },
+        { type: "map", name: "バス停を5つコレクトしよう！", point: 75 },
+        { type: "map", name: "バス停を10つコレクトしよう！", point: 150 },
+        { type: "map", name: "1路線をコレクトしよう！", point: 500 },
+        { type: "map", name: "2路線をコレクトしよう！", point: 1000 },
         // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
         // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
         // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
@@ -85,6 +89,19 @@ li {
   width: 90%;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.point {
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #2c3e50;
+  width: 6rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  right: -10px;
+  bottom: -14px;
 }
 
 li p:first-child {

@@ -37,6 +37,12 @@ const routes = [
     name: "album",
     component: () =>
       import(/* webpackChunkName: "album" */ "../views/Album.vue")
+  },
+  {
+    path: "/collect",
+    name: "collect",
+    component: () =>
+      import(/* webpackChunkName: "collect" */ "../views/Collect.vue")
   }
 ];
 

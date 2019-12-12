@@ -27,6 +27,10 @@
       <camera-modal @close="showShootingModal = false" @shooted="shooted">
       </camera-modal>
     </template>
+
+    <template v-if="showGetPoint">
+      <get-point @close="showGetPoint = false"></get-point>
+    </template>
   </div>
 </template>
 
@@ -35,6 +39,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import Modal from "../components/Modal.vue";
 import CameraModal from "../components/CameraModal.vue";
+import GetPoint from "../components/GetPoint.vue";
 
 const apiKey = "";
 const config = {
@@ -61,7 +66,8 @@ export default {
   name: "BusMap",
   components: {
     Modal,
-    CameraModal
+    CameraModal,
+    GetPoint
   },
   data() {
     return {
@@ -75,7 +81,8 @@ export default {
       enableShootingModal: false,
       showShootingModal: false,
       selectedStop: { name: 111, stopId: 111 },
-      markers: []
+      markers: [],
+      showGetPoint: false
     };
   },
   mounted() {
@@ -151,6 +158,7 @@ export default {
     },
     shooted() {
       this.showShootingModal = false;
+      // 撮影したバス停のアイコンの色を変更
       for (let i = 0; i < this.markers.length; i++) {
         if (this.markers[i].id === this.selectedStop.stopId) {
           const latlng = this.markers[i]._latlng;
@@ -168,6 +176,9 @@ export default {
           this.$set(this.markers, i, marke);
         }
       }
+
+      // ポイントを取得したことを強調する
+      this.showGetPoint = true;
     }
   }
 };

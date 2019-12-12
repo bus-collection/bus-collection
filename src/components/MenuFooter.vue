@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       menu: [
-        { name: "Menu", type: "bars", route: "top" },
+        { name: "Collect", type: "bars", route: "collect" },
         { name: "Quest", type: "question-circle", route: "quest-list" },
         { name: "Map", type: "search", route: "map" },
         { name: "Album", type: "images", route: "album" },
