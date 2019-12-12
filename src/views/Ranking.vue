@@ -2,7 +2,7 @@
   <div class="ranking">
     <div class="header">
       <p><v-icon name="user-circle" scale="3" /></p>
-      <p>金城 太郎</p>
+      <p>{{ me }}</p>
     </div>
     <div class="level">
       <p>Lv: 1</p>
@@ -27,9 +27,14 @@
       </div>
       <div class="rank">
         <p>Ranking</p>
-        <p v-for="(r, i) in tenRanker" :class="`rank-${i + 1}`" :key="i">
-          {{ i + 1 }}: {{ r.name }}
-        </p>
+        <template v-for="(r, i) in tenRanker">
+          <template v-if="r.name === me">
+            <p :class="`rank-${i + 1} me`" :key="i">{{ i + 1 }}: {{ r.name }}</p>
+          </template>
+          <template v-else>
+            <p :class="`rank-${i + 1}`" :key="i">{{ i + 1 }}: {{ r.name }}</p>
+          </template>
+        </template>
       </div>
     </div>
     <div class="footer">
@@ -49,6 +54,7 @@ export default {
   },
   data() {
     return {
+      me: "金城 太郎",
       ranker: [
         { name: "沖縄 太郎" },
         { name: "沖縄 二郎" },
@@ -210,5 +216,10 @@ p {
 
 .footer p:last-child {
   width: 30%;
+}
+
+.me {
+  color: #ff2222;
+  font-weight: bold;
 }
 </style>
