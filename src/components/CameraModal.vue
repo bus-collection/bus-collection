@@ -3,15 +3,15 @@
     <div class="modal-mask" @click="$emit('close')">
       <div class="modal-wrapper">
         <div class="modal-container" @click.stop="prevent">
+          <button class="close-button" @click="$emit('close')">X</button>
           <div class="modal-header">
             <slot name="header"></slot>
-            <button class="close-button" @click="$emit('close')">X</button>
           </div>
 
           <div class="modal-body">
             <slot name="body">
               <template v-if="!showImage">
-                <div @click.prevent="toggleImage">
+                <div @click.prevent="toggleImage" class="pre-camera">
                   <p><v-icon name="camera" scale="5" /></p>
                   <p>撮影</p>
                 </div>
@@ -77,6 +77,8 @@ export default {
 .modal-container {
   height: 60vh;
   width: 60vw;
+  position: relative;
+  justify-content: center;
   overflow: hidden;
   margin: 0 auto;
   display: flex;
@@ -95,10 +97,6 @@ export default {
 .modal-header h3 {
   margin-top: 0;
   color: #42b983;
-}
-
-.modal-body p:first-child {
-  margin-top: 12rem;
 }
 
 .modal-body p:last-child {
@@ -133,6 +131,10 @@ export default {
 
 img {
   width: 100%;
+  height: 100%;
+}
+
+.pre-camera {
   height: 100%;
 }
 </style>

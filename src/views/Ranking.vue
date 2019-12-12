@@ -2,7 +2,7 @@
   <div class="ranking">
     <div class="header">
       <p><v-icon name="user-circle" scale="3" /></p>
-      <p>とうがん づけ</p>
+      <p>金城 太郎</p>
     </div>
     <div class="level">
       <p>Lv: 1</p>
@@ -11,7 +11,7 @@
       <div class="my-info">
         <div>
           <p>🚌 バス停</p>
-          <p>0</p>
+          <p>4</p>
           <p>/all: 3000</p>
         </div>
         <div>
@@ -21,7 +21,7 @@
         </div>
         <div>
           <p>🚌 クエスト</p>
-          <p>0</p>
+          <p>2</p>
           <p>/all: 100</p>
         </div>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="footer">
-      <p>1000</p>
+      <p>140</p>
       <p>point</p>
     </div>
   </div>
@@ -51,16 +51,16 @@ export default {
     return {
       ranker: [
         { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" },
-        { name: "沖縄 太郎" }
+        { name: "沖縄 二郎" },
+        { name: "沖縄 三郎" },
+        { name: "大城 太郎" },
+        { name: "大城 二郎" },
+        { name: "大城 三郎" },
+        { name: "金城 太郎" },
+        { name: "金城 二郎" },
+        { name: "金城 三郎" },
+        { name: "儀武 太郎" },
+        { name: "儀武 二郎" }
       ]
     };
   },

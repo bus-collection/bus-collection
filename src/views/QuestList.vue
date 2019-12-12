@@ -2,7 +2,7 @@
   <div class="quest-list">
     <ul>
       <li v-for="(quest, index) in quests" :key="index" @click="toMap">
-        <p>Q</p>
+        <p>Q{{ index + 1 }}</p>
         <p>{{ quest.name }}</p>
       </li>
     </ul>
@@ -18,34 +18,34 @@ export default {
   data() {
     return {
       quests: [
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        {
-          type: "map",
-          name:
-            "近くのバス停の写真を撮ろう！近くのバス停の写真を撮ろう！近くのバス停の写真を撮ろう！",
-          point: 10
-        },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
-        { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 }
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // {
+        //   type: "map",
+        //   name:
+        //     "近くのバス停の写真を撮ろう！近くのバス停の写真を撮ろう！近くのバス停の写真を撮ろう！",
+        //   point: 10
+        // },
+        { type: "map", name: "近くのバス停を1つコレクトしよう！", point: 10 },
+        { type: "map", name: "近くのバス停を3つコレクトしよう！", point: 10 },
+        { type: "map", name: "バス停を5つコレクトしよう！", point: 10 },
+        { type: "map", name: "バス停を10つコレクトしよう！", point: 10 },
+        { type: "map", name: "1路線をコレクトしよう！", point: 10 },
+        { type: "map", name: "2路線をコレクトしよう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 },
+        // { type: "map", name: "近くのバス停の写真を撮ろう！", point: 10 }
       ]
     };
   },
