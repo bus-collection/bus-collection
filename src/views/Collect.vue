@@ -132,10 +132,6 @@ p {
 	box-sizing: border-box;
 }
 
-.name {
-
-}
-
 .rate {
 	margin-left: auto;
 }

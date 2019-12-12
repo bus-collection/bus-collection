@@ -62,6 +62,13 @@ const collectedIcon = L.icon({
   popupAnchor: [0, -32]
 });
 
+const meIcon = L.icon({
+  iconUrl: require("../assets/me.png"),
+  iconSize: [24, 24],
+  iconAnchor: [18, 36],
+  popupAnchor: [0, -32]
+});
+
 export default {
   name: "BusMap",
   components: {
@@ -111,6 +118,7 @@ export default {
           console.log(error);
         });
       this.plotStops(stops);
+      this.plotMe();
     },
     plotStops(stops) {
       if (!this.map) return;
@@ -179,6 +187,16 @@ export default {
 
       // ポイントを取得したことを強調する
       this.showGetPoint = true;
+    },
+    plotMe () {
+      const marke = L.marker([this.lat, this.lng], {
+        icon: meIcon
+      })
+        .addTo(this.map);
+      // const message = this.markers[i].name;
+      // marke.id = this.markers[i].id;
+      // marke.name = this.markers[i].name;
+      // marke.bindPopup(message, { autoClose: false }).openPopup();
     }
   }
 };
