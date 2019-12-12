@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      isTop: false
+      isTop: true
     };
   },
   watch: {
