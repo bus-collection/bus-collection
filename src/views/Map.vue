@@ -197,10 +197,11 @@ export default {
       // ポイントを取得したことを強調する
       this.showGetPoint = true;
     },
-    plotMe() {
+    plotMe () {
       const marke = L.marker([this.lat, this.lng], {
         icon: meIcon
-      }).addTo(this.map);
+      })
+        .addTo(this.map);
       // const message = this.markers[i].name;
       // marke.id = this.markers[i].id;
       // marke.name = this.markers[i].name;

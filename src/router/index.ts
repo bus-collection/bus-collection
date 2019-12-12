@@ -43,6 +43,12 @@ const routes = [
     name: "collect",
     component: () =>
       import(/* webpackChunkName: "collect" */ "../views/Collect.vue")
+  },
+  {
+    path: "/*",
+    name: "notfound",
+    component: () =>
+      import(/* webpackChunkName: "notfound" */ "../views/NotFound.vue")
   }
 ];
 
