@@ -31,6 +31,10 @@
     <template v-if="showGetPoint">
       <get-point @close="showGetPoint = false"></get-point>
     </template>
+
+    <template v-if="showProgressModal">
+      <progress-modal @close="showProgressModal = false"></progress-modal>
+    </template>
   </div>
 </template>
 
@@ -40,6 +44,7 @@ import L from "leaflet";
 import Modal from "../components/Modal.vue";
 import CameraModal from "../components/CameraModal.vue";
 import GetPoint from "../components/GetPoint.vue";
+import ProgressModal from "../components/ProgressModal.vue";
 
 const apiKey = "";
 const config = {
@@ -74,7 +79,8 @@ export default {
   components: {
     Modal,
     CameraModal,
-    GetPoint
+    GetPoint,
+    ProgressModal
   },
   data() {
     return {
@@ -89,7 +95,8 @@ export default {
       showShootingModal: false,
       selectedStop: { name: 111, stopId: 111 },
       markers: [],
-      showGetPoint: false
+      showGetPoint: false,
+      showProgressModal: true
     };
   },
   mounted() {
@@ -116,9 +123,11 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
+          this.showProgressModal = false;
         });
       this.plotStops(stops);
       this.plotMe();
+      this.showProgressModal = false;
     },
     plotStops(stops) {
       if (!this.map) return;
@@ -188,11 +197,10 @@ export default {
       // ポイントを取得したことを強調する
       this.showGetPoint = true;
     },
-    plotMe () {
+    plotMe() {
       const marke = L.marker([this.lat, this.lng], {
         icon: meIcon
-      })
-        .addTo(this.map);
+      }).addTo(this.map);
       // const message = this.markers[i].name;
       // marke.id = this.markers[i].id;
       // marke.name = this.markers[i].name;

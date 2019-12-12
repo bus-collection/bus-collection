@@ -29,7 +29,9 @@
         <p>Ranking</p>
         <template v-for="(r, i) in tenRanker">
           <template v-if="r.name === me">
-            <p :class="`rank-${i + 1} me`" :key="i">{{ i + 1 }}: {{ r.name }}</p>
+            <p :class="`rank-${i + 1} me`" :key="i">
+              {{ i + 1 }}: {{ r.name }}
+            </p>
           </template>
           <template v-else>
             <p :class="`rank-${i + 1}`" :key="i">{{ i + 1 }}: {{ r.name }}</p>

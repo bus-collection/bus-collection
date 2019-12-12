@@ -1,53 +1,61 @@
 <template>
   <div class="album">
     <div>
-			<div class="footer">
-				<h3>D1 玉城東回り線</h3>
-				<p>コレクト率: {{ collectionRate }}%</p>
-			</div>
+      <div class="footer">
+        <h3>D1 玉城東回り線</h3>
+        <p>コレクト率: {{ collectionRate }}%</p>
+      </div>
       <div class="tiles">
         <div class="tile" v-for="(item, i) in stops" :key="i">
           <p class="name">🚌 {{ item.name }}</p>
-          <template v-if="item.collected"><strong class="rate">コレクト済み</strong></template>
+          <template v-if="item.collected"
+            ><strong class="rate">コレクト済み</strong></template
+          >
           <template v-else><p class="rate">未コレクト</p></template>
         </div>
       </div>
     </div>
     <div>
-			<div class="footer">
-				<h3>D2 玉城東回り線</h3>
-				<p>コレクト率: {{ collectionRate }}%</p>
-			</div>
+      <div class="footer">
+        <h3>D2 玉城東回り線</h3>
+        <p>コレクト率: {{ collectionRate }}%</p>
+      </div>
       <div class="tiles">
         <div class="tile" v-for="(item, i) in stops" :key="i">
           <p class="name">🚌 {{ item.name }}</p>
-          <template v-if="item.collected"><strong class="rate">コレクト済み</strong></template>
+          <template v-if="item.collected"
+            ><strong class="rate">コレクト済み</strong></template
+          >
           <template v-else><p class="rate">未コレクト</p></template>
         </div>
       </div>
     </div>
     <div>
-			<div class="footer">
-				<h3>D3 玉城東回り線</h3>
-				<p>コレクト率: {{ collectionRate }}%</p>
-			</div>
+      <div class="footer">
+        <h3>D3 玉城東回り線</h3>
+        <p>コレクト率: {{ collectionRate }}%</p>
+      </div>
       <div class="tiles">
         <div class="tile" v-for="(item, i) in stops" :key="i">
           <p class="name">🚌 {{ item.name }}</p>
-          <template v-if="item.collected"><strong class="rate">コレクト済み</strong></template>
+          <template v-if="item.collected"
+            ><strong class="rate">コレクト済み</strong></template
+          >
           <template v-else><p class="rate">未コレクト</p></template>
         </div>
       </div>
     </div>
     <div>
-			<div class="footer">
-				<h3>D4 玉城東回り線</h3>
-				<p>コレクト率: {{ collectionRate }}%</p>
-			</div>
+      <div class="footer">
+        <h3>D4 玉城東回り線</h3>
+        <p>コレクト率: {{ collectionRate }}%</p>
+      </div>
       <div class="tiles">
         <div class="tile" v-for="(item, i) in stops" :key="i">
           <p class="name">🚌 {{ item.name }}</p>
-          <template v-if="item.collected"><strong class="rate">コレクト済み</strong></template>
+          <template v-if="item.collected"
+            ><strong class="rate">コレクト済み</strong></template
+          >
           <template v-else><p class="rate">未コレクト</p></template>
         </div>
       </div>
@@ -67,18 +75,18 @@ export default {
         { name: "堀川入口", collected: true },
         { name: "奥武入口", collected: true },
         { name: "志堅原公民館前", collected: true },
-        { name: "奥武島", collected: false },
+        { name: "奥武島", collected: false }
       ]
     };
   },
   computed: {
     collectionRate() {
-			const isCollectedCount = this.stops.reduce((result, stop) => {
-				if (stop.collected) return ++result;
-				return result;
-			}, 0);
-			if (this.stops.length <= 0) return 0;
-			return Math.round(isCollectedCount / this.stops.length * 100);
+      const isCollectedCount = this.stops.reduce((result, stop) => {
+        if (stop.collected) return ++result;
+        return result;
+      }, 0);
+      if (this.stops.length <= 0) return 0;
+      return Math.round((isCollectedCount / this.stops.length) * 100);
     }
   }
 };
@@ -97,13 +105,13 @@ p {
   padding: 0.7rem;
   color: #fff;
   font-weight: bold;
-	display: flex;
-	flex-flow: row;
-	align-items: center;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
 
 .footer p {
-	margin-left: auto;
+  margin-left: auto;
 }
 
 .album {
@@ -122,17 +130,17 @@ p {
 
 .tile {
   display: flex;
-	align-items: center;
+  align-items: center;
   width: 100%;
-	padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .tile:not(:last-child) {
-	border-bottom: 1px solid #2c3e50;
-	box-sizing: border-box;
+  border-bottom: 1px solid #2c3e50;
+  box-sizing: border-box;
 }
 
 .rate {
-	margin-left: auto;
+  margin-left: auto;
 }
 </style>
