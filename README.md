@@ -24,7 +24,9 @@ zipフォルダを解凍
 解凍したフォルダに移動
 ```
 
-### ローカルをご利用の方
+### アプリの起動方法
+
+#### ローカルをご利用の方
 
 node.js を 公式サイトからinstallしてきてください。  
 [https://nodejs.org/ja/](https://nodejs.org/ja/)
@@ -38,7 +40,7 @@ npm run serve
 ```
 
 
-### dockerをご利用の方
+#### dockerをご利用の方
 
 docker を 公式サイトからinstallしてきてください。  
 [https://www.docker.com/](https://www.docker.com/)
